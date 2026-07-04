@@ -7,6 +7,7 @@ main {
     display: flex;
     font-family: Roboto;
     padding: 1em;
+    overflow: auto;
 }
 
 main > div {
