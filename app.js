@@ -1,13 +1,14 @@
 const EXPRESS = require("express")
 const APP = EXPRESS();
 const PORT = 8585;
+let darkMode= true;
 
 APP.set("views","./views")
 APP.set("view engine" , "ejs");
 APP.use(EXPRESS.static("./public"))
 
 APP.get("/",(req,res) => {
-    res.render("homepage")
+    res.render("homepage" ,{darkMode:darkMode})
 })
 
 

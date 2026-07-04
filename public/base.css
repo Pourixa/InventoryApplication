@@ -37,6 +37,7 @@ header {
     justify-content: space-between;
 }
 
+
 nav {
     display: flex;
     align-items: center;
@@ -44,16 +45,56 @@ nav {
     flex-grow: .5;
 }
 
-h2 > a{
+nav > a {
+    display: inline-block;
+    position: relative;
+    transition: transform 0.125s ease-out;
+}
+
+nav > a:not(#selectedTab):hover
+{
+    transform: translate(0 ,-1.5px);
+    cursor: pointer;
+}
+
+nav > a:not(#selectedTab)::after{
+    content: "";
+    left: 50%;
+    transform: translate(-50%);
+    position:absolute;
+    bottom: -4px;
+    width: 70%;
+    height: 5px;
+    border-radius: 999px;
+    background-color: transparent;
+    transition: all 0.125s ease-out;
+}
+
+nav > a:not(#selectedTab):hover::after
+{
+    content: "";
+    left: 50%;
+    bottom: -4px;
+    transform: translate(-50%);
+    width: 70%;
+    height: 5px;
+    background-color: var(--text);
+    border-radius: 999px;
+
+}
+
+nav > a{
     text-decoration: none;  
-    color:var(--text)
+    color:var(--text);
+    font-size: larger;
+    font-weight: bold;
+    
 }
 
 #selectedTab {
     position: relative;
     display: inline-block;
     color: var(--text-muted);
-    text-decoration: none; /* Remove the default underline */
 }
 
 #selectedTab::after {
@@ -66,4 +107,30 @@ h2 > a{
     height: 5px;
     background: var(--text-muted);
     border-radius: 999px;
+}
+
+
+footer {
+    background-color: var(--accent);
+    display: flex;
+    padding: 1em;
+    margin: 1em;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Space Grotesk";
+}
+
+footer > svg {
+    width: 2em;
+    height: 2em;
+}
+
+footer > svg > * 
+{
+    fill: var(--text);
+}
+
+footer > svg:hover
+{
+    cursor: pointer;
 }
