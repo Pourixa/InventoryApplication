@@ -1,17 +1,18 @@
 const EXPRESS = require("express")
 const APP = EXPRESS();
+const categories = require("./controllers/categories")
 const PORT = 8585;
-let darkMode= true;
 
+APP.locals.darkMode= true;
 APP.set("views","./views")
 APP.set("view engine" , "ejs");
 APP.use(EXPRESS.static("./public"))
 
 APP.get("/",(req,res) => {
-    res.render("homepage" ,{darkMode:darkMode})
+    res.render("homepage")
 })
 
-
+APP.use("/categories",categories)
 
 
 APP.listen(PORT,(err) => {
