@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="categories.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
-</head>
-<body>
-    <%- include("./partials/header",{selected : "categories"}); %>
-    <main>
-
-    </main>
-<%- include("./partials/footer" , {darkMode:darkMode}) %>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="categories.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Categories</title>
+    </head>
+    <body>
+        <%- include("./partials/header",{selected : "categories"}); %>
+            <main>
+            <% for(const category of categories) { %>
+                <%- include("./partials/category",{category:category}) %>
+                <% }%>
+            </main>
+    <%- include("./partials/footer" , {darkMode:darkMode}) %>
+    </body>
+    <script src="../controllers/categories.js"></script>
+    </html>

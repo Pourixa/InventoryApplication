@@ -1,6 +1,7 @@
 const EXPRESS = require("express")
-const APP = EXPRESS();
 const categories = require("./controllers/categories")
+
+const APP = EXPRESS();
 const PORT = 8585;
 
 APP.locals.darkMode= true;
