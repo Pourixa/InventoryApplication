@@ -5,13 +5,14 @@
     --hue:28;
 
     --accent : hsl(var(--hue), 63%, 42%);
-    --accent-hover : hsl(var(--hue,63%,50%));
+    --accent-hover : hsl(var(--hue),63%,50%);
 
     --bg: hsl(var(--hue), 61%, 8%);
     --bg-lighter: hsl(var(--hue),61%,10%);
     --surface: hsl(var(--hue),61%,12%);
     --surface-hover:hsl(var(--hue),61%,15%);
     --border:hsl(var(--hue),61%,20%);
+    --border-hover:hsl(var(--hue),61%,24%);
 
     --text:hsl(var(--hue),63%,93%);
     --text-muted:hsla(var(--hue), 63%, 93%,  0.5)
@@ -20,17 +21,26 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body
 {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg);
+}
+
+main {
+    flex-grow: 1;
 }
 
 header {
     font-family:"Space Grotesk";
     background-color: var(--accent);
-    margin: 1em;
     padding: 1em;
     display: flex;
     align-items: center;
@@ -114,7 +124,6 @@ footer {
     background-color: var(--accent);
     display: flex;
     padding: 1em;
-    margin: 1em;
     align-items: center;
     justify-content: space-around;
     font-family: "Space Grotesk";
