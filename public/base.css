@@ -125,6 +125,10 @@ footer > svg {
     height: 2em;
 }
 
+footer > svg:hover{
+    animation: rotation 1s linear infinite   ;
+}
+
 footer > svg > * 
 {
     fill: var(--text);
@@ -133,4 +137,13 @@ footer > svg > *
 footer > svg:hover
 {
     cursor: pointer;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
