@@ -24,6 +24,11 @@ main > div:first-of-type{
 }
 
 main > div:last-of-type > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     height: 25%;
     width: 100%;
     padding: 1em;
@@ -33,6 +38,7 @@ main > div:last-of-type > * {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.493);
     transition: transform ease-out 0.125s  , border-color ease-out 0.3s ;
+    text-decoration: none;
 }
 
 main > div:last-of-type > *:hover{
