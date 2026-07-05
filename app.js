@@ -1,6 +1,6 @@
 const EXPRESS = require("express")
-const categories = require("./controllers/categories")
-
+const categoriesRoute = require("./controllers/categories")
+const itemsRoute = require("./controllers/items")
 const APP = EXPRESS();
 const PORT = 8585;
 
@@ -13,7 +13,8 @@ APP.get("/",(req,res) => {
     res.render("homepage")
 })
 
-APP.use("/categories",categories)
+APP.use("/categories",categoriesRoute)
+APP.use("/items",itemsRoute)
 
 
 APP.listen(PORT,(err) => {

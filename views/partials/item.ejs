@@ -1,0 +1,11 @@
+<a href="item/<%= item.id %>">
+    <article>
+    <img src="<%= item.imageurl %>" alt="<%= item.name %>">
+    <div>
+            <h3><%= item.name %></h3>
+            <h3><%= item.price %> $</h3>
+            <h3>CATEGORY: <br> <%= categories[item.categoryid-1].name %></h3>
+            <h3>QUANTITY: <br>  <%= item.quantity  %></h3>
+    </div>
+    </article>
+</a>

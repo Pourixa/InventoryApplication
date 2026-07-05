@@ -14,6 +14,7 @@ main {
     grid-auto-rows: auto;
     gap: 1em;
     font-family: Roboto;
+    border: var(--border) 5px solid;
     }
 
 main > a {

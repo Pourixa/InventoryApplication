@@ -1,0 +1,42 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="items.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Items</title>
+    </head>
+    <body>
+        <%- include("./partials/header",{selected : "items"}); %>
+            <main>
+                <div>
+                <h4>CATEGORIES</h4>
+                <% for(const category of data.categories) { %>
+                <a href="items?category=<%= category.name  %>" id="<%= data.categoryID != undefined ? (category.id == data.categories[data.categoryID-1].id ? "selected" : "") : "" %>">
+                    <%= category.name %>
+                </a>
+                <% }%>
+                <a href="/items">CLEAR SELECTION</a>
+                </div>
+            <div>
+                <% for(const item of items) { %>
+                    <%- include("./partials/item",{item:item,categories:data.categories}) %>
+                    <% }%>
+            </div>
+            <div>
+                <h4>SUMMERY</h4>
+                <div>
+                    <p>TOTAL ITEMS IN STOCK: <br> <%= data.totalItems %></p>
+                    <p>TOTAL ITEMS IN SELECTED CATEGORY: <br> <%= data.totalItemsCategory%></p>
+                    <p>TOTAL PRICE OF ALL ITEMS: <br> <%= data.totalPrice %> </p>
+                    <p>TOTAL PRICE OF ALL ITEMS IN SELECTED CATEGORY: <br> <%= data.totalPriceCategory %> </p>
+                </div>
+                <div>
+
+                </div>
+            </div>
+
+            </main>
+    <%- include("./partials/footer" , {darkMode:darkMode}) %>
+    </body>
+    </html>
