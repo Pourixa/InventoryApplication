@@ -60,9 +60,10 @@ new Chart(ctx, {
         labels: data.categories.map(c => c.name),
         datasets: [{
             label: 'Items per category',
-            data: data.categoriesStock.map(s => s.sum)
+            data: data.categoriesStock.map(s => s.sum),
+            color: "hsl(var(--hue), 63%, 42%)"
         }]
-    }
+    },
 });
     </script>
     </html>

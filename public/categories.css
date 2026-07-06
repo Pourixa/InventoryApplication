@@ -17,24 +17,52 @@ main {
     border: var(--border) 5px solid;
     }
 
-main > a {
+main >article
+{
+        border: 5px var(--border) solid;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--surface);
+    transition: transform 0.125s ease-out,background-color 0.250s ease-out,border-color 0.250s ease-out;
+
+}
+
+main > article > a:first-of-type {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--surface);
     color:var(--text);
-    border: 5px var(--border) solid;
     padding: 1em;
     text-align: center;
     text-decoration: none;
-    transition: transform 0.125s ease-out,background-color 0.250s ease-out,border-color 0.250s ease-out;
+    flex-grow: 1;
 }
 
-main > a:hover
+main > article:hover
 {
     cursor: pointer;
     background-color: var(--surface-hover);
     border-color: var(--border-hover);
     transform: translate(0,-5px);
+}
+
+main > article > a:last-of-type
+{
+    margin: 1em;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color:var(--text);
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.250s ease-out,border-color 0.250s ease-out;
+}
+
+main > article > a:last-of-type:hover
+{
+background-color: var(--accent-hover);
 }
