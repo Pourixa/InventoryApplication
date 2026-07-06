@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/editCategory.css">
+    <title>Add a category</title>
+</head>
+<body>
+    <%- include("./partials/header",{selected : ""}); %>
+    <main>
+        <form id="deleteForm" action="/editCategory/<%= cat.name %>/delete" method="post" style="visibility: hidden; position: absolute;"></form>
+        <form action="/editCategory/<%= cat.name %>" method="post">
+            <label >
+                TITLE (3 - 255 word characters with spaces): <br>
+                <input type="text" name="name" required pattern="[\w\s]{3,255}" value="<%= cat.name %>">
+            </label>
+            <label>
+                DESCRIPTION: 
+                <textarea name="description"><%= cat.description %></textarea>
+            </label>
+            <div>
+                <button>UPDATE</button>
+                <button type="submit" form="deleteForm">DELETE</button>
+            </div>
+        </form>
+    </main>
+    <%- include("./partials/footer" , {darkMode:darkMode}) %>
+</body>
+</html>

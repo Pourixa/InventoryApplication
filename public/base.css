@@ -19,6 +19,9 @@
 
     --selection-mute:hsl(var(--hue),61%,25%);
     --selection:hsl(var(--hue),61%,35%);
+
+    --danger:hsl(360 100% 42.1%);
+    --danger-hover:hsl(360 100% 54.9%)
 }
 
 * {

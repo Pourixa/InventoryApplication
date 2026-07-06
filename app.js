@@ -1,6 +1,7 @@
 const EXPRESS = require("express")
-const categoriesRoute = require("./controllers/categories")
-const itemsRoute = require("./controllers/items")
+const categoriesRoute = require("./routes/categories")
+const itemsRoute = require("./routes/items")
+const editCatRoute = require("./routes/editCategory")
 const APP = EXPRESS();
 const PORT = 8585;
 
@@ -8,6 +9,7 @@ APP.locals.darkMode= true;
 APP.set("views","./views")
 APP.set("view engine" , "ejs");
 APP.use(EXPRESS.static("./public"))
+APP.use(EXPRESS.urlencoded({ extended: true }));
 
 APP.get("/",(req,res) => {
     res.render("homepage")
@@ -15,6 +17,7 @@ APP.get("/",(req,res) => {
 
 APP.use("/categories",categoriesRoute)
 APP.use("/items",itemsRoute)
+APP.use("/editCategory" , editCatRoute)
 
 
 APP.listen(PORT,(err) => {

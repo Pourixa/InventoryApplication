@@ -1,5 +1,5 @@
 
-const categories = require("../controllers/categories.js");
+const categories = require("../routes/categories.js");
 const DB = require("../pool.js");
 
 async function getCategories()
@@ -38,7 +38,25 @@ async function getItems(category) {
 
 }
 
+async function getOneCategory(name) {
+    const cat = await DB.query("SELECT * FROM categories WHERE name = $1" , [name]).then(d=>  {return d.rows[0] })
+    return cat;
+}
+
+async function updateCategory(origName,data) {
+    await DB.query("UPDATE categories SET name = $1 , description = $2 WHERE name = $3" , [data.name , data.description,origName])
+}
+
+async function deleteCategory(name) {
+    await DB.query("DELETE FROM categories WHERE name = $1" , [name]).catch((err) => {
+        throw new err;
+    })
+}
+
 module.exports = {
     getCategories,
-    getItems
+    getItems,
+    updateCategory,
+    getOneCategory,
+    deleteCategory
 }
