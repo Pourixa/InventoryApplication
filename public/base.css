@@ -51,6 +51,7 @@ header {
     justify-content: space-between;
     overflow-x: auto;
     overflow-y: hidden;
+    flex-shrink: 0;
 }
 
 

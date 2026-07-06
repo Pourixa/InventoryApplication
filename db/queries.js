@@ -13,6 +13,8 @@ async function getItems(category) {
     let data = {totalItems : rows[0].totalitems , totalPrice:rows[0].totalprice};
     ({rows} = await DB.query("SELECT * FROM categories"));
     data.categories= rows;
+    ({rows} = await DB.query("SELECT categoryid , SUM(quantity) FROM items JOIN categories ON items.categoryid = categories.id GROUP BY categoryid"))
+    data.categoriesStock = rows;
     if(category)
     {
         ({rows} = await DB.query("SELECT id FROM categories WHERE name = $1;",[category]));

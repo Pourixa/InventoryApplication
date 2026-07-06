@@ -30,6 +30,10 @@
                     <p>TOTAL ITEMS IN SELECTED CATEGORY: <br> <%= data.totalItemsCategory%></p>
                     <p>TOTAL PRICE OF ALL ITEMS: <br> <%= data.totalPrice %> </p>
                     <p>TOTAL PRICE OF ALL ITEMS IN SELECTED CATEGORY: <br> <%= data.totalPriceCategory %> </p>
+                    <div>
+                        <canvas id="categoryChart">
+                        </canvas>
+                    </div>
                 </div>
                 <div>
 
@@ -39,4 +43,26 @@
             </main>
     <%- include("./partials/footer" , {darkMode:darkMode}) %>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+
+
+const data = <%- JSON.stringify(data) %>;
+
+console.log(data);
+
+const ctx = document.getElementById('categoryChart');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: data.categories.map(c => c.name),
+        datasets: [{
+            label: 'Items per category',
+            data: data.categoriesStock.map(s => s.sum)
+        }]
+    }
+});
+    </script>
     </html>
