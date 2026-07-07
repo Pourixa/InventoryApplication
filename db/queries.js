@@ -38,8 +38,8 @@ async function getItems(category) {
 
 }
 
-async function getOneCategory(name) {
-    const cat = await DB.query("SELECT * FROM categories WHERE name = $1" , [name]).then(d=>  {return d.rows[0] })
+async function getOneCategory(id) {
+    const cat = await DB.query("SELECT * FROM categories WHERE id = $1" , [id]).then(d=>  {return d.rows[0] })
     return cat;
 }
 
@@ -47,14 +47,12 @@ async function addCategory(data) {
     await DB.query("INSERT INTO categories(name , description) VALUES ($1 , $2) " , [data.name , data.description])
 }
 
-async function updateCategory(origName,data) {
-    await DB.query("UPDATE categories SET name = $1 , description = $2 WHERE name = $3" , [data.name , data.description,origName])
+async function updateCategory(id,data) {
+    await DB.query("UPDATE categories SET name = $1 , description = $2 WHERE id = $3" , [data.name , data.description,id])
 }
 
-async function deleteCategory(name) {
-    await DB.query("DELETE FROM categories WHERE name = $1" , [name]).catch((err) => {
-        throw new err;
-    })
+async function deleteCategory(id) {
+    await DB.query("DELETE FROM categories WHERE id = $1" , [id])
 }
 
 module.exports = {

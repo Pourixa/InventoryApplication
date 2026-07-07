@@ -19,7 +19,7 @@ APP.get("/",(req,res) => {
 APP.use("/categories",categoriesRoute)
 APP.use("/items",itemsRoute)
 APP.use("/editCategory" , editCatRoute)
-APP.use("/addCategory",addCategoryRoute)
+// APP.use("/addCategory",addCategoryRoute)
 
 APP.listen(PORT,(err) => {
     if(err)

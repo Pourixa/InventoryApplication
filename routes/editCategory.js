@@ -2,15 +2,15 @@ const {Router} = require("express");
 const DB = require("../db/queries")
 const editCat = Router();
 
-editCat.get("/:category" , async (req,res) =>
+editCat.get("/:categoryID" , async (req,res) =>
 {
-    const cat = await DB.getOneCategory(req.params.category);
+    const cat = await DB.getOneCategory(req.params.categoryID);
     res.render("editCategory",{cat:cat})
 })
 
-editCat.post("/:category" , async (req,res) =>
+editCat.post("/:categoryID" , async (req,res) =>
 {
-    const cat = await DB.updateCategory(req.params.category,{name:req.body.name,description:req.body.description});
+    const cat = await DB.updateCategory(req.params.categoryID,{name:req.body.name,description:req.body.description});
 
     res.redirect("/categories")
 })

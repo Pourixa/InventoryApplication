@@ -9,8 +9,8 @@
 <body>
     <%- include("./partials/header",{selected : ""}); %>
     <main>
-        <form id="deleteForm" action="/editCategory/<%= cat.name %>/delete" method="post" style="visibility: hidden; position: absolute;"></form>
-        <form action="/editCategory/<%= cat.name %>" method="post">
+        <form id="deleteForm" action="/editCategory/<%= cat.id %>/delete" method="post" style="visibility: hidden; position: absolute;"></form>
+        <form action="/editCategory/<%= cat.id %>" method="post">
             <label >
                 TITLE (3 - 255 word characters with spaces): <br>
                 <input type="text" name="name" required pattern="[\w\s]{3,255}" value="<%= cat.name %>">

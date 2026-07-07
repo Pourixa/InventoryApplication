@@ -52,13 +52,13 @@ const items = [
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name VARCHAR(255) UNIQUE,
+    name VARCHAR(255),
     description TEXT
 );
 
 CREATE TABLE IF NOT EXISTS items (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name VARCHAR(255) UNIQUE,
+    name VARCHAR(255),
     description TEXT,
     price DECIMAL(10,2),
     quantity INTEGER,
