@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/addCategory.css">
+    <title>Add a category</title>
+</head>
+<body>
+    <%- include("./partials/header",{selected : "/addCategory"}); %>
+    <main>
+        <form action="/addCategory" method="post">
+            <label >
+                TITLE (3 - 255 word characters with spaces): <br>
+                <input type="text" name="name" required pattern="[\w\s]{3,255}"     >
+            </label>
+            <label>
+                DESCRIPTION: 
+                <textarea name="description"></textarea>
+            </label>
+                <div><button>ADD</button></div>
+        </form>
+    </main>
+    <%- include("./partials/footer" , {darkMode:darkMode}) %>
+</body>
+</html>

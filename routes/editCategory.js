@@ -16,7 +16,7 @@ editCat.post("/:category" , async (req,res) =>
 })
 
 editCat.post("/:category/delete",async (req,res) =>{
-    await DB.deleteCategory(req.params.category).then(() => res.redirect("categories")).catch((err) => {res.send("<script>window.location.replace('/categories');alert('THERE WAS AN ERROR DELETING THE CATEGORY! MAKE SURE THE CATEGORY IS EMPTY FIRST!')</script>")});
+    await DB.deleteCategory(req.params.category).then(() => res.redirect("/categories")).catch((err) => {res.send("<script>window.location.replace('/categories');alert('THERE WAS AN ERROR DELETING THE CATEGORY! MAKE SURE THE CATEGORY IS EMPTY FIRST!')</script>")});
 })
 
 

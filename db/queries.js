@@ -43,6 +43,10 @@ async function getOneCategory(name) {
     return cat;
 }
 
+async function addCategory(data) {
+    await DB.query("INSERT INTO categories(name , description) VALUES ($1 , $2) " , [data.name , data.description])
+}
+
 async function updateCategory(origName,data) {
     await DB.query("UPDATE categories SET name = $1 , description = $2 WHERE name = $3" , [data.name , data.description,origName])
 }
@@ -58,5 +62,6 @@ module.exports = {
     getItems,
     updateCategory,
     getOneCategory,
-    deleteCategory
+    deleteCategory,
+    addCategory
 }

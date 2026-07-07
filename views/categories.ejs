@@ -7,7 +7,7 @@
         <title>Categories</title>
     </head>
     <body>
-        <%- include("./partials/header",{selected : "categories"}); %>
+        <%- include("./partials/header",{selected : "/categories"}); %>
             <main>
             <% for(const category of categories) { %>
                 <%- include("./partials/category",{category:category}) %>
