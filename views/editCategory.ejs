@@ -9,7 +9,7 @@
 <body>
     <%- include("./partials/header",{selected : ""}); %>
     <main>
-        <form id="deleteForm" action="/editCategory/<%= cat.id %>/delete" method="post" style="visibility: hidden; position: absolute;"></form>
+        <!-- <form id="deleteForm" action="/editCategory/<%= cat.id %>/delete" method="post" style="visibility: hidden; position: absolute;"></form> -->
         <form action="/editCategory/<%= cat.id %>" method="post">
             <label >
                 TITLE (3 - 255 word characters with spaces): <br>
@@ -21,7 +21,7 @@
             </label>
             <div>
                 <button>UPDATE</button>
-                <button type="submit" form="deleteForm">DELETE</button>
+                <!-- <button type="submit" form="deleteForm">DELETE</button> -->
             </div>
         </form>
     </main>
