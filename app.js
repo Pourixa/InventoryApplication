@@ -3,6 +3,7 @@ const categoriesRoute = require("./routes/categories")
 const itemsRoute = require("./routes/items")
 const editCatRoute = require("./routes/editCategory")
 const addCategoryRoute = require("./routes/addCategory")
+const editItemRoute = require("./routes/editItem")
 const APP = EXPRESS();
 const PORT = 8585;
 
@@ -20,6 +21,7 @@ APP.use("/categories",categoriesRoute)
 APP.use("/items",itemsRoute)
 APP.use("/editCategory" , editCatRoute)
 // APP.use("/addCategory",addCategoryRoute)
+APP.use("/item" ,editItemRoute )
 
 APP.listen(PORT,(err) => {
     if(err)

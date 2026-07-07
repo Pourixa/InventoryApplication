@@ -8,8 +8,9 @@
 <body>
     <%- include("./partials/header" , {selected:"/addItem"}) %>
     <main>
+        
         <form id="deleteItem" style="visibility: hidden; position: absolute;"></form>
-        <img src="<%= item.url %>" alt="<%= item.name %>">
+        <img src="<%= item.imageurl %>" alt="<%= item.name %>">
         <form id="editItem">
             <label >
                 TITLE:
@@ -17,11 +18,11 @@
             </label>
             <label >
                 PRICE:
-                <input name="price" type="number" required value="<%- item.price %>">
+                <input name="price" type="number" required value="<%= item.price %>">
             </label>
             <label>
                 STOCK:
-                <input type="number" name="stock" value="<%- item.quantity %>">
+                <input type="number" name="stock" value="<%= item.quantity %>">
             </label>
             <label>
                 IMAGE URL:
@@ -30,17 +31,18 @@
             <label>
                 CATEGORY:
 <select name="category">
-    <% const s = item.categoryID %>
+    <% const s = item.categoryid; %>
+
     <option value="">Select a category</option>
-    <option value="1" <%= s === 1 ? selected : "" %>>Electric Guitars</option>
-    <option value="2" <%= s === 2 ? selected : "" %>>Amplifiers</option>
-    <option value="3" <%= s === 3 ? selected : "" %>>Effects Pedals</option>
-    <option value="4" <%= s === 4 ? selected : "" %>>Cables</option>
-    <option value="5" <%= s === 5 ? selected : "" %>>Accessories</option>
+    <option value="1" <%= s === 1 ? "selected" : "" %>>Electric Guitars</option>
+    <option value="2" <%= s === 2 ? "selected" : "" %>>Amplifiers</option>
+    <option value="3" <%= s === 3 ? "selected" : "" %>>Effects Pedals</option>
+    <option value="4" <%= s === 4 ? "selected" : "" %>>Cables</option>
+    <option value="5" <%= s === 5 ? "selected" : "" %>>Accessories</option>
 </select>
             </label>
             <label>
-                <textarea name="description" ><% item.description%></textarea>
+                <textarea name="description" ><%= item.description%></textarea>
             </label>
         </form>
         <button type="submit" form="editItem">EDIT</button>

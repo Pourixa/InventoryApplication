@@ -55,11 +55,18 @@ async function deleteCategory(id) {
     await DB.query("DELETE FROM categories WHERE id = $1" , [id])
 }
 
+async function getOneItem(id) {
+    const item = await DB.query("SELECT * FROM items WHERE id = $1" , [id]).then(i => {return i.rows[0]})
+    return item;
+
+}
+
 module.exports = {
     getCategories,
     getItems,
     updateCategory,
     getOneCategory,
     deleteCategory,
-    addCategory
+    addCategory,
+    getOneItem
 }
