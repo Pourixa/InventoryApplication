@@ -3,50 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit item<%= item.name %></title>
+    <link rel="stylesheet" href="/editItem.css">
+    <title>Edit item <%= item.name %></title>
 </head>
 <body>
-    <%- include("./partials/header" , {selected:"/addItem"}) %>
+    <%- include("./partials/header" , {selected:""}) %>
     <main>
-        
-        <form id="deleteItem" style="visibility: hidden; position: absolute;"></form>
-        <img src="<%= item.imageurl %>" alt="<%= item.name %>">
-        <form id="editItem">
-            <label >
-                TITLE:
-                <input name="name" type="text" required pattern="[\w\s]{3,255}" value="<%= item.name %>">
-            </label>
-            <label >
-                PRICE:
-                <input name="price" type="number" required value="<%= item.price %>">
-            </label>
-            <label>
-                STOCK:
-                <input type="number" name="stock" value="<%= item.quantity %>">
-            </label>
-            <label>
-                IMAGE URL:
-                <input type="url" name="imageURL" value="<%= item.imageurl %>">
-            </label>
-            <label>
-                CATEGORY:
-<select name="category">
-    <% const s = item.categoryid; %>
-
-    <option value="">Select a category</option>
-    <option value="1" <%= s === 1 ? "selected" : "" %>>Electric Guitars</option>
-    <option value="2" <%= s === 2 ? "selected" : "" %>>Amplifiers</option>
-    <option value="3" <%= s === 3 ? "selected" : "" %>>Effects Pedals</option>
-    <option value="4" <%= s === 4 ? "selected" : "" %>>Cables</option>
-    <option value="5" <%= s === 5 ? "selected" : "" %>>Accessories</option>
-</select>
-            </label>
-            <label>
-                <textarea name="description" ><%= item.description%></textarea>
-            </label>
-        </form>
-        <button type="submit" form="editItem">EDIT</button>
-        <button type="submit" form="deleteItem">DELETE</button>
+        <div>
+            <form id="deleteItem" style="visibility: hidden; position: absolute;" action="/item/<%= item.id %>/delete" method="post"></form>
+            <img src="<%= item.imageurl %>" alt="<%= item.name %>">
+            <form id="editItem" action="/item/<%= item.id %>" method="post">
+                <label >
+                    TITLE:
+                    <br>
+                    <input name="name" type="text" required pattern="[\w\s]{3,255}" value="<%= item.name %>">
+                </label>
+                <label >
+                    PRICE: <br>
+                    <input min="0" name="price" type="number" required value="<%= item.price %>">
+                </label>
+                <label>
+                    STOCK: <br>
+                    <input min="0" type="number" name="stock" value="<%= item.quantity %>">
+                </label>
+                <label>
+                    IMAGE URL: <br>
+                    <input type="url" name="imageURL" value="<%= item.imageurl %>">
+                    <a href="/item/<%= item.id %>/preview">
+                    PREVIEW IMAGE
+                    </a>
+                </label>
+                <label>
+                    CATEGORY: <br>
+            <select name="category">
+                <% const s = item.categoryid; %>
+            
+                <option value="1" <%= s === 1 ? "selected" : "" %>>Electric Guitars</option>
+                <option value="2" <%= s === 2 ? "selected" : "" %>>Amplifiers</option>
+                <option value="3" <%= s === 3 ? "selected" : "" %>>Effects Pedals</option>
+                <option value="4" <%= s === 4 ? "selected" : "" %>>Cables</option>
+                <option value="5" <%= s === 5 ? "selected" : "" %>>Accessories</option>
+            </select>
+                </label>
+                <label>
+                    DESCRIPTION: <br>
+                    <textarea name="description" ><%= item.description%></textarea>
+                </label>
+            </form>
+        </div>
+        <label >
+            ITEM PASSWORD: <br>
+            <input type="password" name="password">
+        </label>
+        <div>
+                <button type="submit" form="editItem">EDIT</button>
+                <button type="submit" form="deleteItem">DELETE</button>
+        </div>
     </main>
     <%- include("./partials/footer",{darkMode:darkMode}) %>
 </body>
