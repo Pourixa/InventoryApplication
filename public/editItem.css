@@ -133,3 +133,34 @@ object-position: center;
 h4 {
     color: var(--danger);
 }
+
+input{
+    border-radius: 10px;
+    outline: none;
+    border:none
+}
+
+input:focus
+{
+    outline: 5px var(--accent) solid;
+    border-radius: 10px;
+    /* border: ; */
+}
+
+textarea{
+    border-radius: 10px;
+    outline: none;
+    border:none
+}
+
+textarea:focus
+{
+    outline: 5px var(--accent) solid;
+    border-radius: 10px;
+    /* border: ; */
+}
+
+input
+{
+    padding: 0.5em;
+}

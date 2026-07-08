@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/addItem.css">
+    <title>ADD AN ITEM</title>
+</head>
+<body>
+    <%- include("./partials/header" , {selected:"addItem"}) %>
+    <main>
+        <div>
+            <img src="" alt="PREVIEW OF THE IMAGE">
+            <form id="addItem" action="/addItem" method="post">
+                <label >
+                    TITLE:
+                    <br>
+                    <input name="name" type="text" required pattern="[\w\s]{3,255}" >
+                </label>
+                <label >
+                    PRICE: <br>
+                    <input step="0.01" min="0" name="price" type="number" required >
+                </label>
+                <label>
+                    STOCK: <br>
+                    <input min="0" type="number" name="stock" >
+                </label>
+                <label>
+                    IMAGE URL: <br>
+                    <input id="url" type="url" name="imageURL" >
+                    <button id="urlbtn">
+                    PREVIEW IMAGE
+                    </button>
+                </label>
+                <label>
+                    CATEGORY: <br>
+            <select name="category">
+            
+                <option>Electric Guitars</option>
+                <option>Amplifiers</option>
+                <option>Effects Pedals</option>
+                <option>Cables</option>
+                <option>Accessories</option>
+            </select>
+                </label>
+                <label>
+                    DESCRIPTION: <br>
+                    <textarea name="description" ></textarea>
+                </label>
+            </form>
+        </div>
+        <label style="text-align: center;">
+            ITEM PASSWORD: <br> <span>MAKE SURE TO REMEMBER IT YOU WILL NEED IT FOR UPDATING AND DELETING THE ITEM</span>
+            <input form= "addItem" id="password" required type="password" name="password">
+        </label>
+        <div>
+                <button type="submit" form="addItem">ADD</button>
+        </div>
+    </main>
+    <%- include("./partials/footer",{darkMode:darkMode}) %>
+</body>
+<script>
+    const btn = document.querySelector("#urlbtn")
+    const img = document.querySelector("img")
+    btn.addEventListener("click" , (e) => {
+        e.preventDefault();
+        const input = document.querySelector("#url")
+        img.setAttribute("src",input.value) 
+    })
+</script>
+</html>
