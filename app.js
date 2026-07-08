@@ -8,7 +8,6 @@ const addItem = require("./routes/addItem")
 const APP = EXPRESS();
 const PORT = 8585;
 
-APP.locals.darkMode= true;
 APP.set("views","./views")
 APP.set("view engine" , "ejs");
 APP.use(EXPRESS.static("./public"))

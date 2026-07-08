@@ -1,6 +1,12 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
+            <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
         <link rel="stylesheet" href="items.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +47,7 @@
             </div>
 
             </main>
-    <%- include("./partials/footer" , {darkMode:darkMode}) %>
+    <%- include("./partials/footer" ) %>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

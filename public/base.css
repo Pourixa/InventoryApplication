@@ -24,11 +24,49 @@
     --danger-hover:hsl(360 100% 54.9%)
 }
 
+:root[data-theme = "light"]
+{
+    --hue:28;
+
+    --accent : hsl(var(--hue), 63%, 58%);
+    --accent-hover : hsl(var(--hue),63%,50%);
+
+    --bg: hsl(var(--hue), 61%, 92%);
+    --bg-lighter: hsl(var(--hue),61%,90%);
+    --surface: hsl(var(--hue),61%,88%);
+    --surface-hover:hsl(var(--hue),61%,85%);
+    --border:hsl(var(--hue),61%,80%);
+    --border-hover:hsl(var(--hue),61%,86%);
+
+    --text:hsl(var(--hue),63%,7%);
+    --text-muted:hsla(var(--hue), 63%, 7%,  0.5);
+
+    --selection-mute:hsl(var(--hue),61%,75%);
+    --selection:hsl(var(--hue),61%,65%);
+
+    --danger:hsl(360 100% 58%);
+    --danger-hover:hsl(360 100% 45%)
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: background-color 0.125s ease-out,color 0.125s ease-out;
 }
+
+#icon-sun, #icon-moon {
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* dark mode (default): show sun (click sun -> go light) */
+#icon-moon { display: none; }
+#icon-sun { display: inline-block; }
+
+/* light mode: show moon (click moon -> go dark) */
+:root[data-theme="light"] #icon-sun { display: none; }
+:root[data-theme="light"] #icon-moon { display: inline-block; }
 
 body
 {
