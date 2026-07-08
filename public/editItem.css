@@ -95,6 +95,11 @@ form > label > input {
 select {
     padding: 0.5em;
 }
+select:focus
+{
+        outline: 5px var(--accent) solid;
+    border-radius: 10px;
+}
 
 form > label > textarea {
     font-family: roboto;

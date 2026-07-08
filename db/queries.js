@@ -68,6 +68,11 @@ async function deleteItem(id) {
     await DB.query("DELETE FROM items WHERE id = $1" ,[id])
 }
 
+async function addItem(data) {
+    const res = await DB.query("INSERT INTO items(name,description,price,quantity,imageurl,categoryid,password) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id",[data.name , data.description , data.price , data.stock , data.imageURL ,data.category,data.password])
+    return res.rows[0].id;
+}
+
 module.exports = {
     getCategories,
     getItems,
@@ -77,5 +82,6 @@ module.exports = {
     addCategory,
     getOneItem,
     updateItem,
-    deleteItem
+    deleteItem,
+    addItem
 }
