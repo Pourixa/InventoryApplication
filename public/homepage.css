@@ -20,7 +20,7 @@ main > div {
 }
 
 main > div:first-of-type{
-    color: var(--text);
+    color: white;
 
 }
 
