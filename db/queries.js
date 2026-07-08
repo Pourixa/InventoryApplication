@@ -58,7 +58,14 @@ async function deleteCategory(id) {
 async function getOneItem(id) {
     const item = await DB.query("SELECT * FROM items WHERE id = $1" , [id]).then(i => {return i.rows[0]})
     return item;
+}
 
+async function updateItem(id,data) {
+    await DB.query("UPDATE items SET name = $1 , description = $2 , price = $3 , quantity = $4 , imageurl = $5 , categoryid = $6 WHERE id = $7" ,[data.name , data.description , data.price , data.stock , data.imageURL ,data.category,id])
+}
+
+async function deleteItem(id) {
+    await DB.query("DELETE FROM items WHERE id = $1" ,[id])
 }
 
 module.exports = {
@@ -68,5 +75,7 @@ module.exports = {
     getOneCategory,
     deleteCategory,
     addCategory,
-    getOneItem
+    getOneItem,
+    updateItem,
+    deleteItem
 }

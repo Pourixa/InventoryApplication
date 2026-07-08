@@ -10,7 +10,11 @@
     <%- include("./partials/header" , {selected:""}) %>
     <main>
         <div>
-            <form id="deleteItem" style="visibility: hidden; position: absolute;" action="/item/<%= item.id %>/delete" method="post"></form>
+            <form id="deleteItem" style="visibility: hidden; position: absolute;" action="/item/<%= item.id %>/delete" method="post">
+            <label >
+            <input type="hidden" name="password" id="deletepass">
+        </label>
+            </form>
             <img src="<%= item.imageurl %>" alt="<%= item.name %>">
             <form id="editItem" action="/item/<%= item.id %>" method="post">
                 <label >
@@ -20,7 +24,7 @@
                 </label>
                 <label >
                     PRICE: <br>
-                    <input min="0" name="price" type="number" required value="<%= item.price %>">
+                    <input step="0.01" min="0" name="price" type="number" required value="<%= item.price %>">
                 </label>
                 <label>
                     STOCK: <br>
@@ -28,10 +32,10 @@
                 </label>
                 <label>
                     IMAGE URL: <br>
-                    <input type="url" name="imageURL" value="<%= item.imageurl %>">
-                    <a href="/item/<%= item.id %>/preview">
+                    <input id="url" type="url" name="imageURL" value="<%= item.imageurl %>">
+                    <button id="urlbtn">
                     PREVIEW IMAGE
-                    </a>
+                    </button>
                 </label>
                 <label>
                     CATEGORY: <br>
@@ -49,11 +53,15 @@
                     DESCRIPTION: <br>
                     <textarea name="description" ><%= item.description%></textarea>
                 </label>
+            <label style="visibility: hidden; position: absolute;">
+            <input type="hidden" name="password" id="editpass">
+        </label>
             </form>
         </div>
         <label >
             ITEM PASSWORD: <br>
-            <input type="password" name="password">
+            <h4><%= error %></h4>
+            <input id="password" required type="password" name="password">
         </label>
         <div>
                 <button type="submit" form="editItem">EDIT</button>
@@ -62,4 +70,20 @@
     </main>
     <%- include("./partials/footer",{darkMode:darkMode}) %>
 </body>
+<script>
+    const btn = document.querySelector("#urlbtn")
+    const img = document.querySelector("img")
+    btn.addEventListener("click" , (e) => {
+        e.preventDefault();
+        const input = document.querySelector("#url")
+        img.setAttribute("src",input.value) 
+    })
+
+    const password = document.getElementById("password");
+
+    password.addEventListener("input", () => {
+    document.getElementById("editpass").value = password.value;
+    document.getElementById("deletepass").value = password.value;
+});
+</script>
 </html>
